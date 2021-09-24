@@ -1,0 +1,21 @@
+#include <M5StickCPlus.h>
+
+void setup()
+{
+Serial.begin(115200);
+pinMode(10, OUTPUT);
+pinMode(37, INPUT); //set pin mode to input.设置引脚模式为输入模式
+pinMode(39, INPUT); //set pin mode to input.设置引脚模式为输入模式
+M5.Lcd.begin();  
+}
+
+void loop()
+{
+M5.Lcd.setCursor(10,10);
+M5.Lcd.setTextSize(5);
+M5.Lcd.fillScreen(WHITE);
+M5.Lcd.setTextColor(RED);
+M5.Lcd.print("TEST");
+Serial.println("running...");
+delay(500);
+}

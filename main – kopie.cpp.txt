@@ -1,0 +1,48 @@
+#include <Arduino.h>
+#include <M5StickCPlus.h>
+#include <Arduino.h>
+#include <WiFi.h>
+#include <WiFiMulti.h>
+#include <HTTPClient.h>
+
+int last_value = 0;
+int cur_value = 0;
+
+void setup() {
+  // initialize digital pin LED_BUILTIN as an output.
+  Serial.begin(115200);
+  pinMode(10, OUTPUT);
+  pinMode(37, INPUT); //set pin mode to input.设置引脚模式为输入模式
+  pinMode(39, INPUT); //set pin mode to input.设置引脚模式为输入模式
+  M5.begin();
+  // Lcd display
+  M5.Lcd.fillScreen(BLACK);
+  delay(500);
+
+  // text print.  文字打印
+  M5.Lcd.setCursor(0, 10);
+  M5.Lcd.setTextColor(WHITE);
+  M5.Lcd.setTextSize(1);
+  M5.Lcd.printf("cokoliv");
+}
+
+// the loop function runs over and over again forever
+
+void loop() {
+  digitalWrite(10, HIGH);   
+  delay(1000);                       
+  digitalWrite(10, LOW);    
+  delay(1000);        
+
+ cur_value = digitalRead(37); // read the value of BUTTON.  读取33号引脚的值
+
+ if(cur_value != last_value){
+    if(cur_value==0){
+    Serial.println("MACKA");              
+    }
+    else{
+    Serial.println("NEMACKA");              
+    }
+    last_value = cur_value;
+  }
+}
