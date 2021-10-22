@@ -44,7 +44,13 @@ for(j=0;j<22; j++)
    {
    for(i=0;i<11; i++)
    {
-      M5.update();
+    
+    M5.update();
+    
+    if(M5.BtnB.isPressed()) {
+    ESP.restart();
+    }
+    
     if(M5.BtnA.isPressed()) {
     Serial.println("button A pressed");
     i=0;
@@ -58,7 +64,7 @@ for(j=0;j<22; j++)
     if (canvas[position]==0xffff)
     {
     M5.Lcd.drawRect(canvasX+(rect_size*i),canvasY+10,rect_size,rect_size,0xffff);
-    } else M5.Lcd.drawRect(canvasX+(rect_size*i),canvasY+10,rect_size,rect_size,0xcccc);
+    } else M5.Lcd.drawRect(canvasX+(rect_size*i),canvasY+10,rect_size,rect_size,0x0000);
     
     //Serial.print(i);
     //Serial.print(" ");
