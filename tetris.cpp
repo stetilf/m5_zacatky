@@ -17,7 +17,17 @@ void setup()
   }
   
   canvas[10]=0xffff;
-  
+  canvas[21]=0xffff;
+  canvas[20]=0xffff;
+  canvas[31]=0xffff;
+
+canvas[6]=0xffff;
+canvas[17]=0xffff;
+canvas[28]=0xffff;
+canvas[39]=0xffff;
+
+
+
   M5.begin();
   M5.Lcd.fillScreen(BLACK);
   pinMode(10, OUTPUT);
@@ -66,17 +76,17 @@ for(j=0;j<22; j++)
 
 
 
-  for (int pos=0;pos<300;pos++)
+  for (int pos=300;pos>0;pos--)
   {
     if (canvas[pos]==0xffff)
     {
     canvas[pos]=0x0000;
     canvas[pos+11]=0xffff;
-    break;
+    //break;
     } 
   }
 
-  delay(2000);
+  delay(200);
 
 }
 
