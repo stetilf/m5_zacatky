@@ -7,6 +7,7 @@ int i=0;
 int j=0;
 int rect_size=10;
 int position=0;
+int falling=22;
 
 void setup() 
 {
@@ -16,19 +17,6 @@ void setup()
     canvas[pos]=0x0000;
   }
   
-canvas[11]=0xffff;
-canvas[1]=0xffff;
-canvas[2]=0xffff;
-canvas[3]=0xffff;
-canvas[4]=0xffff;
-canvas[5]=0xffff;
-canvas[6]=0xffff;
-canvas[7]=0xffff;
-canvas[8]=0xffff;
-canvas[9]=0xffff;
-canvas[10]=0xffff;
-
-
 
   M5.begin();
   M5.Lcd.fillScreen(BLACK);
@@ -87,7 +75,7 @@ for(j=0;j<22; j++)
 
 
 
-  for (int pos=300;pos>0;pos--)
+  for (int pos=300;pos>=0;pos--)
   {
     if (canvas[pos]==0xffff)
      {
@@ -103,8 +91,37 @@ for(j=0;j<22; j++)
     } 
   }
 
-  delay(200);
+  if(falling>22)
+  {
+  int rnd=random(0,2); //vybere typ
+  int rnd2=random(1,10); //vybere pozici 
+   if (rnd==0)
+   {
+    canvas[rnd2]=0xffff;
+    canvas[rnd2-1]=0xffff;
+    canvas[rnd2+1]=0xffff;
+    canvas[rnd2+11]=0xffff;
+   } 
+   if (rnd==1)
+   {
+    canvas[rnd2]=0xffff;
+    canvas[rnd2+1]=0xffff;
+    canvas[rnd2+11]=0xffff;
+    canvas[rnd2+12]=0xffff;
+   }
+   if (rnd==2)
+   {
+    canvas[rnd2-1]=0xffff;
+    canvas[rnd2]=0xffff;
+    canvas[rnd2+1]=0xffff;
+   }
 
+
+  falling=0;
+  }
+  falling++;
+
+  delay(200);
 }
 
 
