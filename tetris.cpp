@@ -64,7 +64,10 @@ for(j=0;j<22; j++)
     if (canvas[position]==0xffff)
     {
     M5.Lcd.drawRect(canvasX+(rect_size*i),canvasY+10,rect_size,rect_size,0xffff);
-    } else M5.Lcd.drawRect(canvasX+(rect_size*i),canvasY+10,rect_size,rect_size,0x0000);
+    } else if (canvas[position]==0x0ff0)
+          M5.Lcd.drawRect(canvasX+(rect_size*i),canvasY+10,rect_size,rect_size,0x0ff0);
+          else 
+          M5.Lcd.drawRect(canvasX+(rect_size*i),canvasY+10,rect_size,rect_size,0x0000);
     
     //Serial.print(i);
     //Serial.print(" ");
@@ -85,10 +88,16 @@ for(j=0;j<22; j++)
   for (int pos=300;pos>0;pos--)
   {
     if (canvas[pos]==0xffff)
-    {
-    canvas[pos]=0x0000;
-    canvas[pos+11]=0xffff;
-    //break;
+     {
+      if (pos>150) 
+       {
+        canvas[pos]=0x0ff0;
+        break;  
+       } else {
+                canvas[pos]=0x0000;
+                canvas[pos+11]=0xffff;
+                //break;
+              }  
     } 
   }
 
