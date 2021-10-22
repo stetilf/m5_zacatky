@@ -16,15 +16,17 @@ void setup()
     canvas[pos]=0x0000;
   }
   
-  canvas[10]=0xffff;
-  canvas[21]=0xffff;
-  canvas[20]=0xffff;
-  canvas[31]=0xffff;
-
+canvas[11]=0xffff;
+canvas[1]=0xffff;
+canvas[2]=0xffff;
+canvas[3]=0xffff;
+canvas[4]=0xffff;
+canvas[5]=0xffff;
 canvas[6]=0xffff;
-canvas[17]=0xffff;
-canvas[28]=0xffff;
-canvas[39]=0xffff;
+canvas[7]=0xffff;
+canvas[8]=0xffff;
+canvas[9]=0xffff;
+canvas[10]=0xffff;
 
 
 
@@ -89,7 +91,7 @@ for(j=0;j<22; j++)
   {
     if (canvas[pos]==0xffff)
      {
-      if (pos>150) 
+      if (pos>230) 
        {
         canvas[pos]=0x0ff0;
         break;  
