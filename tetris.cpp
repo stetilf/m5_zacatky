@@ -93,7 +93,7 @@ for(j=0;j<22; j++)
 
   if(falling>22)
   {
-  int rnd=random(0,2); //vybere typ
+  int rnd=random(0,3); //vybere typ
   int rnd2=random(1,10); //vybere pozici 
    if (rnd==0)
    {
@@ -115,13 +115,18 @@ for(j=0;j<22; j++)
     canvas[rnd2]=0xffff;
     canvas[rnd2+1]=0xffff;
    }
+   if (rnd==3)
+   {
+    canvas[rnd2]=0xffff;
+    canvas[rnd2+1]=0xffff;
+   }
 
 
   falling=0;
   }
   falling++;
 
-  delay(200);
+  delay(100);
 }
 
 
