@@ -15,8 +15,8 @@ float roll  = 0.0F;
 float yaw   = 0.0F;
 
 int canvas[200];
-int canvasX=10;
-int canvasY=0;
+int canvasX=12;
+int canvasY=2;
 int i=0;
 int j=0;
 int rect_size=10;
@@ -45,83 +45,38 @@ M5.Lcd.drawRect(2,2,97,97,BLUE);  */
 //M5.Lcd.drawRect(50,50,0,60,WHITE);  
 
 
-for(j=0;j<21; j++)
+for(j=0;j<22; j++)
    {
    
 
    for(i=0;i<11; i++)
    {
+    
+    if(j%2==0)
+    {
+    if (i%2==0)
+    {
     M5.Lcd.drawRect(canvasX+(rect_size*i),canvasY+10,rect_size,rect_size,RED);
-    delay(500);
+    } else M5.Lcd.drawRect(canvasX+(rect_size*i),canvasY+10,rect_size,rect_size,BLUE);
+    } else 
+    if (i%2!=0)
+    {  
+    M5.Lcd.drawRect(canvasX+(rect_size*i),canvasY+10,rect_size,rect_size,GREEN);
+    } else 
+    M5.Lcd.drawRect(canvasX+(rect_size*i),canvasY+10,rect_size,rect_size,WHITE);
+    
+
+
+    delay(10);
    }
    canvasY=canvasY+10;
   }
-  
-
-   /*
-   {
-     M5.Lcd.drawRect(canvasX+1,canvasY+1,canvasX+rect_size,canvasY+rect_size,RED);
-    canvasX+=10;
-    if (i%10==0) 
-    {
-      canvasY+=10;
-      canvasX+=0;
-    }
-    delay(1000);
-   }*/
 }
-
-
 
 int cekam=50;
 int spriteX=0;
 int spriteY=0;
 
 void loop() {
-
-  //M5.Imu.getGyroData(&gyroX,&gyroY,&gyroZ);
   M5.Imu.getAccelData(&accX,&accY,&accZ);
-  //M5.Imu.getAhrsData(&pitch,&roll,&yaw);
-  
-  
-  //Serial.printf("%6.2f  %6.2f  %6.2f o/s\n", gyroX, gyroY, gyroZ);
-  //Serial.printf(" %5.2f   %5.2f   %5.2f G\n\n\n\n", accX, accY, accZ);
-  //Serial.printf(" %5.2f   %5.2f   %5.2f\n", pitch, roll, yaw);
-
-/*spriteX=round((accX*100)+100);
-spriteY=100;
-Serial.println(spriteX);
-  */
-
-//M5.Lcd.printf(0,50,accX);
-
-/*
-M5.Lcd.drawBitmap(spriteX, spriteY, 22, 29, ma1);
-delay(cekam);
-M5.Lcd.drawBitmap(spriteX, spriteY, 22, 29, ma2);
-delay(cekam);
-M5.Lcd.drawBitmap(spriteX, spriteY, 22, 29, ma3);
-delay(cekam);
-M5.Lcd.drawBitmap(spriteX, spriteY, 22, 29, ma4);
-delay(cekam);
-M5.Lcd.drawBitmap(spriteX, spriteY, 22, 29, ma5);
-delay(cekam);
-M5.Lcd.drawBitmap(spriteX, spriteY, 22, 29, ma6);
-delay(cekam);
-M5.Lcd.drawBitmap(spriteX, spriteY, 22, 29, ma7);
-delay(cekam);
-M5.Lcd.drawBitmap(spriteX, spriteY, 22, 29, ma8);
-M5.Lcd.fillScreen(WHITE);*/
-
-
-//Serial.println(ax);
-
-
-//.Lcd.drawBitmap()
-
-//M5.Lcd.drawXBitmap(10, 10, image_data_61x61,61, 61);
-// M5.Lcd.drawRect(mx,my,mx+10,my+10,RED);
-// M5.Lcd.drawRect(mx,my,mx+10,my+10,RED);
-//delay(10000);
-//M5.Lcd.fillScreen(BLACK);
 }
