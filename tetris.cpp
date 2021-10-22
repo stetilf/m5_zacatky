@@ -1,6 +1,5 @@
 #include <M5StickCPlus.h>
 #include <pgmspace.h>  // PROGMEM support header
-#include "mfiles.h"
 
 float accX = 0.0F;
 float accY = 0.0F;
@@ -25,6 +24,9 @@ int rect_size=10;
 void setup() {
    M5.begin();
    M5.Lcd.fillScreen(BLACK);
+   pinMode(10, OUTPUT);
+   pinMode(37, INPUT);
+   pinMode(39, INPUT);
    M5.Lcd.setRotation(0);
    //delay(20000);
    //M5.Imu.getAccelAdc(ax,ay,az);
@@ -47,27 +49,35 @@ M5.Lcd.drawRect(2,2,97,97,BLUE);  */
 
 for(j=0;j<22; j++)
    {
-   
-
    for(i=0;i<11; i++)
    {
-    
     if(j%2==0)
     {
     if (i%2==0)
     {
-    M5.Lcd.drawRect(canvasX+(rect_size*i),canvasY+10,rect_size,rect_size,RED);
-    } else M5.Lcd.drawRect(canvasX+(rect_size*i),canvasY+10,rect_size,rect_size,BLUE);
+    M5.Lcd.drawRect(canvasX+(rect_size*i),canvasY+10,rect_size,rect_size,0xfccf);
+    } else M5.Lcd.drawRect(canvasX+(rect_size*i),canvasY+10,rect_size,rect_size,0xff00);
     } else 
     if (i%2!=0)
     {  
-    M5.Lcd.drawRect(canvasX+(rect_size*i),canvasY+10,rect_size,rect_size,GREEN);
+    M5.Lcd.drawRect(canvasX+(rect_size*i),canvasY+10,rect_size,rect_size,0xffff);
     } else 
-    M5.Lcd.drawRect(canvasX+(rect_size*i),canvasY+10,rect_size,rect_size,WHITE);
+    M5.Lcd.drawRect(canvasX+(rect_size*i),canvasY+10,rect_size,rect_size,0xffff);
+    Serial.print(i);
+    Serial.print(" ");
+    Serial.println(j);
+    M5.update();
+    if(M5.BtnA.isPressed()) {
+    Serial.println("button A pressed");
+    i=0;
+    j=0;
+    M5.Lcd.fillScreen(BLACK);
+    }
     
+    delay(200);
+    
+   
 
-
-    delay(10);
    }
    canvasY=canvasY+10;
   }
