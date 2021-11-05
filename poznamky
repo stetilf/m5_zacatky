@@ -1,6 +1,10 @@
 arduino ide postup:
 https://docs.m5stack.com/en/arduino/arduino_development
 
+v arduino IDE Ctrl+,
+manažer desek, přidat:
+https://m5stack.oss-cn-shenzhen.aliyuncs.com/resource/arduino/package_m5stack_index.json 
+
 barvy na displeji jsou v RGB565
 https://community.m5stack.com/topic/41/lesson-1-1-lcd-graphics
 
