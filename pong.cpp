@@ -44,22 +44,26 @@ void loop() {
    {
      ballDir=2;
      ballDir+=10;                        //změna směru na vlevo dolů
-   } else if (ballDir==2 && ballY<235) //směr vlevo dolů && kolize dole
+   } else if (ballDir==2 && ballY>235) //směr vlevo dolů && kolize dole
    {
      ballDir=3;
      ballDir+=10;                        //změna směru na vlevo nahoru
-   } else if (ballDir==2 && ballX<5)   //směr vlevo dolů && kolize dole
+     Serial.println("směr vlevo dolů && kolize dole => změna směru na vpravo nahoru");
+   } else if (ballDir==2 && ballX<5)   //směr vlevo dolů && kolize vlevo
    {
      ballDir=1;
-     ballDir+=10;                        //změna směru na vpravo dolů
+     ballDir+=10;                        //změna směru na vlevo nahoru
+     Serial.println("směr vlevo dolů && kolize dole => změna směru na vpravo dolů");
    } else if (ballDir==3 && ballY<5)   //směr vlevo nahoru && kolize nahoře
    {
      ballDir=2;
      ballDir+=10;                        //změna směru na vlevo dolů
+     Serial.println("směr vlevo nahoru && kolize nahoře => změna směru na vlevo dolů");
    } else if (ballDir==3 && ballX<5)   //směr vlevo nahoru && kolize vlevo
    {
      ballDir=0;
      ballDir+=10;                        //změna směru na vpravo nahoru
+     Serial.println("směr vlevo nahoru && kolize vlevo => změna směru na vpravo nahoru");
    }
 
   if (ballDir>=10) ballDir-=10;
@@ -81,6 +85,6 @@ void loop() {
       delay(10000);
    }
     M5.Lcd.drawRect(pX,pY,40,8,WHITE);
-   delay(10);
+   delay(5);
    M5.Lcd.fillScreen(BLACK);
 }
