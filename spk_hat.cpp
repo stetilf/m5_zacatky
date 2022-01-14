@@ -24,10 +24,23 @@ void playMusic(const uint8_t* music_data, uint16_t sample_rate) {
       delayMicroseconds(delay_interval);
     } 
 }
+
+int play=0;
+
 void loop() {
   // put your main code here, to run repeatedly:
-  ledcWriteTone(ledChannel, 1250);
-  delay(1000);
+  
+  
+  if (play==1)
+  {
+  ledcWriteTone(ledChannel, random(100,2000));
+  delay(100);
+  }
+  M5.BtnA.read();
+  if (M5.BtnA.isPressed())
+  {
+   play = !play;
+  }
   ledcWriteTone(ledChannel, 0);
-  delay(1000);
+  delay(10);
 }
